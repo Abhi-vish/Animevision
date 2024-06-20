@@ -36,5 +36,3 @@ def prediction(image_path):
     index = np.argmax(output)
     return index
 
-predicted = prediction(image_path="images/goku.jpg")  # Adjust the path to your image
-label = animes[predicted]
