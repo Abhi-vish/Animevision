@@ -28,7 +28,7 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     class_index  = prediction(uploaded_file)
     label = animes[class_index]
-    st.write(image)
+    st.image(image)
     st.write("Prediction : ", label)
     st.divider()
 
