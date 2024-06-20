@@ -21,7 +21,7 @@ def get_anime_details(anime_name):
 
 st.title('Anime Detection App')
 
-uploaded_file = st.file_uploader("Choose an Image...", type="jpg,jpeg")
+uploaded_file = st.file_uploader("Choose an Image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     # Load and preprocess the image
