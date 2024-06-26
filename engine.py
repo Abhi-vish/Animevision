@@ -3,6 +3,7 @@ from torchvision import models, transforms
 from PIL import Image
 import numpy as np
 from anime_classes import animes
+import streamlit as st
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -27,12 +28,19 @@ transform = transforms.Compose([
 
 # Function for image prediction
 def prediction(image_path):
-    # Load and preprocess the image
-    image = Image.open(image_path)
-    image = transform(image).unsqueeze(0).to(device)  # Add batch dimension and move to device
-    with torch.no_grad():
-        output = model(image)
-        output = output.cpu().numpy()
-    index = np.argmax(output)
-    return index
+    try: 
+        # Load and preprocess the image
+        image = Image.open(image_path)
+        image = transform(image).unsqueeze(0).to(device)  # Add batch dimension and move to device
+
+        # perform prediction
+        with torch.no_grad():
+            output = model(image)
+            output = output.cpu().numpy()
+        
+        index = np.argmax(output)
+        return index
+    
+    except Exception as e:
+        st.write(f"Error processing image {image_path}")
 
