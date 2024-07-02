@@ -3,3 +3,6 @@ venv
 images
 test.py
 model.pth
+main.py
+.env
+response.json
